@@ -1,10 +1,10 @@
 import { createClient } from 'redis';
 
 const client = createClient({
-    password: 'NpufnoY4KRXD9dAJOq3zJ15ckpuPOxUZ',
+    password: process.env.REDIS_HOST,
     socket: {
-        host: 'redis-11522.c278.us-east-1-4.ec2.cloud.redislabs.com',
-        port: 11522
+        host: process.env.REDIS_PW,
+        port: process.env.REDIS_PORT
     }
 });
 client.on("error" , (err)=>{ 
