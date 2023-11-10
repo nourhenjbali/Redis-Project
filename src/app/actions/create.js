@@ -1,5 +1,5 @@
 "use server";
-
+// this is the file that connect with the redis database and interact with 
 import { createClient } from "redis";
 import { redirect } from "next/navigation";
 
@@ -13,6 +13,7 @@ export async function createBook(formData) {
   });
   (async () => {
     try {
+      // we should connect with the client to enable using the commands 
       await client.connect();
       console.log("Connected to Redis server");
     } catch (error) {
@@ -29,5 +30,6 @@ export async function createBook(formData) {
     author,
     blurb,
   });
+  await client.hGet(books) ; 
   redirect("/");
 }
